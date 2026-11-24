@@ -26,6 +26,7 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
+  const [logoError, setLogoError] = useState(false);
   const { totalItems } = useCart();
   const { setCartOpen } = useUI();
   const navigate = useNavigate();
@@ -38,10 +39,22 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-slate-200">
       <div className="container-x py-3 flex items-center justify-between gap-4">
+        {/* Logo + Brand */}
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <div className="w-10 h-10 rounded-lg bg-brand-600 text-white grid place-items-center font-extrabold text-lg font-display">
-            A
-          </div>
+          {!logoError ? (
+            <img
+              src="/logo.jpg"
+              alt="Ascle Pharma logo"
+              width="40"
+              height="40"
+              className="w-10 h-10 object-contain rounded-lg"
+              onError={() => setLogoError(true)}
+            />
+          ) : (
+            <div className="w-10 h-10 rounded-lg bg-brand-600 text-white grid place-items-center font-extrabold text-lg font-display">
+              A
+            </div>
+          )}
           <div className="leading-tight">
             <p className="font-extrabold text-slate-900 font-display">
               Ascle Pharma
@@ -52,6 +65,7 @@ export default function Navbar() {
           </div>
         </Link>
 
+        {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-700">
           {links.map((l) => (
             <NavLink
@@ -68,6 +82,7 @@ export default function Navbar() {
           ))}
         </nav>
 
+        {/* Actions */}
         <div className="flex items-center gap-2">
           <a
             href={`https://wa.me/${WA}`}
@@ -109,6 +124,7 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Search bar */}
       <div className="border-t border-slate-100 bg-slate-50">
         <form
           onSubmit={submitSearch}
@@ -130,6 +146,7 @@ export default function Navbar() {
         </form>
       </div>
 
+      {/* Mobile menu */}
       {open && (
         <div className="lg:hidden border-t border-slate-200 bg-white">
           <nav className="flex flex-col p-4 gap-3 text-sm font-semibold">
