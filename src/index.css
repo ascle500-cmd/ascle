@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body { @apply bg-slate-50 text-slate-800 font-sans antialiased; }
+.container-x { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+.btn { @apply inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition px-5 py-3 text-sm; }
+.btn-primary { @apply btn bg-brand-600 hover:bg-brand-700 text-white; }
+.btn-dark { @apply btn bg-slate-900 hover:bg-slate-800 text-white; }
+.btn-green { @apply btn bg-green-500 hover:bg-green-600 text-white; }
+.btn-ghost { @apply btn bg-white hover:bg-slate-100 text-slate-800 border border-slate-200; }
+.card { @apply bg-white rounded-2xl border border-slate-200 shadow-card; }
+.section-title { @apply text-3xl md:text-4xl font-extrabold text-slate-900 font-display; }
+.section-kicker { @apply text-brand-600 font-semibold uppercase tracking-wider text-xs; }
